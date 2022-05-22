@@ -1,0 +1,50 @@
+﻿@model List<Mango.Web.Models.ProductDto>
+
+<br />
+<br />
+
+<div class="container p-4 border">
+    <div class="row pb-2">
+        <div class="col">
+            <h1 class="text-info">Product List</h1>
+        </div>
+        <div class="col text-end pt-1">
+            <a asp-action="ProductCreate" class="btn btn-outline-info"><i class="fas fas-plus"></i> Create New Product</a>
+        </div>
+    </div>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>CategoryName</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.CategoryName</td>
+                    <td>@item.Price</td>
+                    <td>
+                        <a class="btn  btn-success" asp-action="ProductEdit" asp-route-productId="@item.ProductId">
+                           Edit
+                        </a>
+
+                        <a class="btn  btn-danger" asp-action="ProductDelete" asp-route-productId="@item.ProductId">
+                            Delete
+                        </a>
+                    </td>
+
+                </tr>
+
+
+
+            }
+        </tbody>
+    </table>
+</div>
